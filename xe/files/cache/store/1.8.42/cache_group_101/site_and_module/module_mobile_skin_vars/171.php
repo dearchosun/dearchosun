@@ -1,0 +1,3 @@
+<?php
+if(!defined('__XE__')) { exit(); }
+return 'a:3:{s:5:\"color\";O:8:\"stdClass\":3:{s:10:\"module_srl\";s:3:\"171\";s:4:\"name\";s:5:\"color\";s:5:\"value\";s:6:\"333333\";}s:12:\"duration_new\";O:8:\"stdClass\":3:{s:10:\"module_srl\";s:3:\"171\";s:4:\"name\";s:12:\"duration_new\";s:5:\"value\";s:2:\"12\";}s:8:\"m_editor\";O:8:\"stdClass\":3:{s:10:\"module_srl\";s:3:\"171\";s:4:\"name\";s:8:\"m_editor\";s:5:\"value\";s:1:\"2\";}}';

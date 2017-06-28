@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="soo_probabilities">
+		<value xml:lang="ko"><![CDATA[확률]]></value>
+		<value xml:lang="en"><![CDATA[Probabilities]]></value>
+	</item>
+	<item name="soo_temperature">
+		<value xml:lang="ko"><![CDATA[온도]]></value>
+		<value xml:lang="en"><![CDATA[Temperature]]></value>
+	</item>
+	<item name="soo_humidity">
+		<value xml:lang="ko"><![CDATA[습도]]></value>
+		<value xml:lang="en"><![CDATA[Humidity]]></value>
+	</item>
+	<item name="soo_p_rain">
+		<value xml:lang="ko"><![CDATA[강수확률]]></value>
+		<value xml:lang="en"><![CDATA[Rainfall probability]]></value>
+	</item>
+	<item name="soo_pubtime">
+		<value xml:lang="ko"><![CDATA[발표시간]]></value>
+		<value xml:lang="en"><![CDATA[Publishing time]]></value>
+	</item>
+	<item name="sky_lang" type="array">
+		<item name="1">
+			<value xml:lang="ko"><![CDATA[맑음]]></value>
+			<value xml:lang="en"><![CDATA[Clear]]></value>
+		</item>
+		<item name="2">
+			<value xml:lang="ko"><![CDATA[구름 조금]]></value>
+			<value xml:lang="en"><![CDATA[Partly Cloudy]]></value>
+		</item>
+		<item name="3">
+			<value xml:lang="ko"><![CDATA[구름 많음]]></value>
+			<value xml:lang="en"><![CDATA[Mostly Cloudy]]></value>
+		</item>
+		<item name="4">
+			<value xml:lang="ko"><![CDATA[흐림]]></value>
+			<value xml:lang="en"><![CDATA[Cloudy]]></value>
+		</item>
+	</item>
+	<item name="rain_lang" type="array">
+		<item name="0">
+			<value xml:lang="ko"><![CDATA[없음]]></value>
+			<value xml:lang="en"><![CDATA[None]]></value>
+		</item>
+		<item name="1">
+			<value xml:lang="ko"><![CDATA[비]]></value>
+			<value xml:lang="en"><![CDATA[Rain]]></value>
+		</item>
+		<item name="2">
+			<value xml:lang="ko"><![CDATA[비/눈]]></value>
+			<value xml:lang="en"><![CDATA[Rain/Snow]]></value>
+		</item>
+		<item name="3">
+			<value xml:lang="ko"><![CDATA[눈/비]]></value>
+			<value xml:lang="en"><![CDATA[Snow/Rain]]></value>
+		</item>
+		<item name="4">
+			<value xml:lang="ko"><![CDATA[눈]]></value>
+			<value xml:lang="en"><![CDATA[Snow]]></value>
+		</item>
+	</item>
+	<item name="soo_copyright">
+		<value xml:lang="ko"><![CDATA[날씨 정보 저작권자]]></value>
+		<value xml:lang="en"><![CDATA[Weather information copyright]]></value>
+	</item>
+	<item name="soo_kma">
+		<value xml:lang="ko"><![CDATA[기상청]]></value>
+		<value xml:lang="en"><![CDATA[Korea Meteorological Administration]]></value>
+	</item>
+	<item name="soo_today">
+		<value xml:lang="ko"><![CDATA[오늘]]></value>
+		<value xml:lang="en"><![CDATA[Today]]></value>
+	</item>
+	<item name="soo_tomorrow">
+		<value xml:lang="ko"><![CDATA[내일]]></value>
+		<value xml:lang="en"><![CDATA[Tomorrow]]></value>
+	</item>
+	<item name="soo_weather">
+		<value xml:lang="ko"><![CDATA[날씨]]></value>
+		<value xml:lang="en"><![CDATA[Weather]]></value>
+	</item>
+</lang>

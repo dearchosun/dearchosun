@@ -1,0 +1,42 @@
+<!--@if(version_compare(__XE_VERSION__, '1.8.0', '<'))-->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/xeicon/1.0.4/xeicon.min.css" />
+<!--@else-->
+	<load target="./../../../../common/xeicon/xeicon.min.css" />
+<!--@end-->
+<load target="./js/content_widget.js" />
+<load target="./css/css.css" />
+<load target="./lang" />
+{@$datas_orginal = $datas}
+{@$location_array = $datas->location_array}
+<section class="widgetContainer">
+	<h1 class="soo_weather_title">{$lang->soo_weather}</h1>
+	<div class="misolWeather">
+		<div class="misolTab" cond="trim($datas_orginal->location2->link) != ''">
+			<ul class="misolWeatherTabA widgetTab">
+				{@$point_n = 0}
+				<block loop="$location_array=>$point_key,$point_data" cond="$point_data->data->link">
+					<li class="active"|cond="$point_n == 0"><a href="{$point_data->data->link}" onmouseover="content_widget_tab_show(jQuery(this),jQuery(this).parents('div.misolTab').next('dl.widgetDivider'),{$point_n})" onclick="this.onmouseover();return false;"><span>{$point_data->name}</span></a>{@$point_n++}</li>
+				</block>
+				
+			</ul>
+		</div>
+		<div class="misolTop" cond="trim($datas_orginal->location2->link) == ''">
+			<a href="{$datas->location1->link}" onclick="window.open(this.href);return false;" class="misol_top_a"><h2>{$location1}</h2><span class="misol_more"><i class="xi-angle-right" title="{$lang->detail_view}"></i></span></a>
+		</div>
+		<dl class="widgetDivider" cond="trim($datas_orginal->location2->link) != ''">
+			{@$point_n2 = 0}
+			<block loop="$location_array=>$point_key,$point_data" cond="$point_data->data->link">
+				<dt>{$point_data->name}</dt>
+				<dd class="open"|cond="$point_n2 == 0">
+					{@ $datas = $point_data->data}
+					<!--#include("./normal.html")-->
+				</dd>{@$point_n2++}
+			</block>
+		</dl>
+		<div cond="trim($datas_orginal->location2->link) == ''">
+			{@ $datas = $datas_orginal->location1}
+			<!--#include("./normal.html")-->
+		</div>
+		<footer class="soo_weather_footer">{$lang->soo_pubtime}: <time datetime="{date('Y-m-d\TH:i\+09:00',$datas_orginal->pubtime)}">{date('m/d H:i',$datas_orginal->pubtime)}</time>, <address>{$lang->soo_copyright} &copy; <a href="http://www.kma.go.kr" onclick="window.open(this.href);return false">{$lang->soo_kma}</a></address></footer>
+	</div>
+</section>

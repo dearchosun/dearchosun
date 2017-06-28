@@ -1,0 +1,162 @@
+<load target="./js/script.js" />
+<load target="./css/style.css" />
+<!--@if($layout_info->module_srl_alert == 'Y')-->
+  <script type="text/javascript">
+    alert("- WE_HOME 레이아웃의 메세지 -\nmodule_srl : {$module_info->module_srl}");
+  </script>
+<!--@end-->
+<style type="text/css">
+  /* Layout Style */
+  <!--@if($layout_info->layout_style == 'Sub')-->
+     .layout_content .main_content { width:775px; float:left; margin:0 0 0 5px; }
+  <!--@else if($layout_info->layout_style == 'NoMenu')-->
+     .layout_content .main_content { width:980px; margin:0; }
+  <!--@else-->
+     .layout_content .main_content { width:600px; float:left; margin:0 0 10px 5px; }
+  <!--@end-->
+  <!--@if($layout_info->gnb_radius == 'Y')-->
+     .layout_head .layout_topmenu .sub,
+     .layout_head .layout_topmenu .sub li:first-child { border-top-right-radius:0; }
+     .layout_head .layout_topmenu ul ul { border-radius:15px; border-top-left-radius:0; border-bottom-right-radius:0; background:#fafafa; }
+     .layout_head .layout_topmenu .nohas_sub { border-top-right-radius:15px; border-bottom-right-radius:15px; }
+     .layout_head .layout_topmenu .nohas_sub li:first-child { border-top-right-radius:15px; }
+     .layout_head .layout_topmenu .nohas_sub li:last-child { border-bottom-right-radius:15px; }
+     .layout_head .layout_topmenu .sub li:last-child { border-bottom-left-radius:15px; }
+     .layout_head .layout_topmenu .sub .ssub { border-bottom-right-radius:15px; }
+  <!--@end-->
+     .layout_head .logo_line .head_ad { left:{$layout_info->head_ad_left+200}px; top:{$layout_info->head_ad_top+10}px; }
+     .layout_search { right:{$layout_info->search_right+5}px; top:{$layout_info->search_top+5}px; }
+     .layout_foot .notice .family_site { right:{$layout_info->family_site_right+10}px; top:{$layout_info->family_site_top+7}px; }
+  <!--@if($layout_info->logo_left)-->
+     .layout_head .logo_line h1 { left:{$layout_info->logo_left}px; }
+  <!--@end-->
+  <!--@if($layout_info->logo_top)-->
+     .layout_head .logo_line h1 { top:{$layout_info->logo_top}px; }
+  <!--@end-->
+  <!--@if($layout_info->gnb_color)-->
+    .layout_head .layout_topmenu .home_menu img { background:{$layout_info->gnb_color}; }
+    .layout_head .layout_topmenu { background-color:{$layout_info->gnb_color}; }
+  <!--@end-->
+  <!--@if($layout_info->gnb_img)-->
+    .layout_head .layout_topmenu { background-image:url("{$layout_info->gnb_img}"); }
+  <!--@end-->
+  <!--@if($layout_info->gnb_hover)-->
+    .layout_head .layout_topmenu .menu_top:hover { background:url("{$layout_info->gnb_hover}") repeat-x left top; }
+    .layout_head .layout_topmenu .menu_top.selected { background:url("{$layout_info->gnb_hover}") repeat-x left top; }
+  <!--@end-->
+</style>
+<div class="layout_body">
+  <div class="top_box">
+   <div class="layout_width">
+    <ul class="box_right">
+     <li cond="$layout_info->topbox_home == 'Y'"><a href="{getUrl()}">Home</a></li>
+     <li cond="$is_logged && $layout_info->topbox_info == 'Y'"><a href="{getUrl('act','dispMemberInfo')}">{$lang->cmd_view_member_info}</a></li>
+     <li cond="$is_logged && $layout_info->topbox_login == 'Y'"><a href="{getUrl('act','dispMemberLogout')}">{$lang->cmd_logout}</a></li>
+     <li cond="$is_logged && $layout_info->topbox_nickname == 'Y'"><a href="{getUrl('','module','admin')}" onclick="window.open(this.href);return false;" cond="$grant->manager">{$logged_info->nick_name} [{$lang->cmd_management}]</a></li>
+     <li cond="!$is_logged && $layout_info->topbox_signup == 'Y'"><a href="{getUrl('act','dispMemberSignUpForm')}">{$lang->cmd_signup}</a></li>
+     <li cond="!$is_logged && $layout_info->topbox_login == 'Y'"><a href="{getUrl('act','dispMemberLoginForm')}">{$lang->cmd_login}</a></li>
+     <li loop="$top_menu->list=>$key1,$val1" cond="$val1['link']"><a href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">{$val1['link']}</a></li>
+     <li class="select_lang" cond="$layout_info->topbox_lang == 'Y'">
+      <a href="#">{$lang_supported[$lang_type]}</a>
+      <ul>
+       <li loop="$lang_supported=>$key,$val" cond="$key!= $lang_type"><a onclick="doChangeLangType('{$key}');return false;">{$val}</a></li>
+      </ul>
+     </li>
+    </ul>
+    <div class="bookmark" cond="$layout_info->topbox_bookmark == 'Y'"><a href="#" onclick="bookmark('{Context::getBrowserTitle()}','{getUrl()}'); return false;">즐겨찾기 추가</a></div>
+   </div>
+  </div>
+ <div class="layout_head">
+  <div class="logo_line">
+   <h1>
+    <a href="{$layout_info->logo_href}"><img src="{$layout_info->logo_image}" alt="{$layout_info->logo_alt}" cond="$layout_info->logo_image" /><span cond="!$layout_info->logo_image">{$layout_info->logo_alt}</span></a>
+   </h1>
+   <div class="head_ad">
+    {$layout_info->head_ad}
+   </div>
+  </div>
+  <div class="layout_topmenu">
+   <ul class="main_menu" style="margin-left:10px;"|cond="$layout_info->gnb_home_menu == 'N'">
+    <li class="home_menu" cond="$layout_info->gnb_home_menu == 'Y'"><a href="{getUrl()}"><img src="./images/ColorHome.png" alt="home" /></a></li>
+    <li loop="$main_menu->list=>$key1,$val1" cond="$val1['link']" class="menu_top<!--@if($val1['selected'])--> selected<!--@end-->">
+     <a href="{$val1['href']}" class="first_a" target="_blank"|cond="$val1['open_window']=='Y'">{$val1['link']}</a>
+     <ul cond="$val1['list']" class="sub">
+      <li loop="$val1['list']=>$key2,$val2" cond="$val2['link']" <!--@if($val2['selected'])-->class="selected"<!--@end-->>
+       <a href="{$val2['href']}" class="second_a" target="_blank"|cond="$val2['open_window']=='Y'"><span class="mtext">{$val2['link']}</span><span class="hassub" cond="$val2['list']"></span></a>
+       <ul cond="$val2['list']" class="ssub">
+        <li loop="$val2['list']=>$key3,$val3" cond="$val3['link']" <!--@if($val3['selected'])-->class="selected"<!--@end-->>
+         <a href="{$val3['href']}" target="_blank"|cond="$val3['open_window']=='Y'"><span class="mtext">{$val3['link']}</span></a>
+        </li>
+       </ul>
+      </li>
+     </ul>
+    </li>
+   </ul>
+  </div>
+  <div class="update_news" cond="$layout_info->updatenews != 'N'">
+   <form action="{getUrl()}" method="post" class="layout_search" cond="$layout_info->search == 'Y'">
+    <input type="hidden" name="vid" value="{$vid}" cond="$vid"/>
+    <input type="hidden" name="mid" value="{$mid}" />
+    <input type="hidden" name="act" value="IS" />
+    <input type="hidden" name="search_target" value="title_content" />
+    <input type="text" name="is_keyword" value="{$is_keyword}" title="검색 할 단어를 입력해 주세요." class="search_text" />
+    <input type="image" src="./images/search_button.gif" alt="{$lang->cmd_search}" class="submit" />
+   </form>
+   <div class="update_widget" cond="$layout_info->updatenews != 'W'">
+    <div class="rows">업데이트 소식</div>
+    <div class="rows">&gt;</div>
+    <div class="rows" style="float:none" cond="$layout_info->updatenews == 'L'"><img class="zbxe_widget_output" widget="content" skin="updatenews" colorset="default"<!--@if($layout_info->updatenews_srl)--> module_srls="{$layout_info->updatenews_srl}"<!--@end--> content_type="document" option_view="title,regdate,nickname" show_browser_title="N" show_comment_count="Y" show_trackback_count="Y" show_category="N" show_icon="Y" order_target="list_order" order_type="desc" /></div>
+    <div class="rows" style="float:none" cond="$layout_info->updatenews == 'U'">{$layout_info->updatenews_text}</div>
+   </div>
+   <div cond="$layout_info->updatenews == 'W'">{$layout_info->updatenews_text}</div>
+  </div>
+ </div>
+ <div class="layout_content">
+  <div class="leftside" cond="$layout_info->layout_style != 'NoMenu'">
+   <div class="layout_login" cond="$layout_info->login">{$layout_info->login}</div>
+   <div class="layout_login" cond="!$layout_info->login"><img class="zbxe_widget_output" widget="login_info" skin="xe_official" colorset="default" /></div>
+   <div class="lnb" loop="$main_menu->list=>$key1,$val1" cond="$val1['selected']">
+    <div class="top_menu"><a href="{$val1['href']}">{$val1['link']}</a></div>
+    <ul cond="$val1['selected'] && $val1['list']">
+     <li loop="$val1['list']=>$key2,$val2" cond="$val2['link']" cond="$val1['selected']" <!--@if($val2['selected'])-->class="selected"<!--@end-->>
+     <a href="{$val2['href']}" target="_blank"|cond="$val2['open_window']=='Y'">{$val2['link']}</a>
+      <ul cond="$val2['list']">
+       <li loop="$val2['list']=>$key3,$val3" cond="$val3['link']" <!--@if($val3['selected'])-->class="selected"<!--@end-->>
+        <a href="{$val3['href']}" target="_blank"|cond="$val3['open_window']=='Y'">{$val3['link']}</a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </div>
+   <div class="layout_left_content" cond="$layout_info->left_content">{$layout_info->left_content}</div>
+  </div>
+  <div class="main_content">
+   {$content}
+  </div>
+  <div class="rightside" cond="$layout_info->layout_style == 'Main'">
+   <block cond="$layout_info->right_content">{$layout_info->right_content}</block>
+  </div>
+ </div>
+ <div class="layout_foot">
+  <div class="notice" cond="$layout_info->notice != 'N'">
+   <div><img class="zbxe_widget_output" widget="content" skin="default" colorset="white"<!--@if($layout_info->notice_srl)--> module_srls="{$layout_info->notice_srl}"<!--@end--> content_type="document" list_type="normal" tab_type="none" markup_type="list" list_count="1" subject_cut_size="70" option_view="title" show_browser_title="Y" show_comment_count="Y" show_trackback_count="Y" show_category="N" show_icon="Y" order_target="list_order" order_type="desc" cond="$layout_info->notice == 'L'" /></div>
+   <div cond="$layout_info->notice == 'U'" style="height:20px;">{$layout_info->notice_text}</div>
+    <div class="family_site" cond="$family_menu->list">
+     <span>패밀리 사이트</span>
+     <ul>
+      <li loop="$family_menu->list=>$key,$val"><a href="{$val['href']}" target="_blank">{$val['link']}</a></li>
+     </ul>
+    </div>
+  </div>
+  <div class="bottom_menu_copy">
+   <div class="bottom_menu" cond="$bottom_menu->list">
+    <ul>
+     <li loop="$bottom_menu->list=>$key1,$val1" <!--@if($val1['selected'])-->class="selected"<!--@end-->><a href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">{$val1['link']}</a></li>
+    </ul>
+   </div> 
+   {@$layout_info->copyright = str_replace("#year#",date("Y"),$layout_info->copyright)}
+   <div class="copy">{$layout_info->copyright}</div>
+   <div class="designedby">Designed By <a href="http://www.webengine.co.kr/">WebEngine</a>.</div>
+  </div>
+ </div>
+</div>
