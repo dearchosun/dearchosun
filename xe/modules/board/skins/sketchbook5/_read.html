@@ -119,8 +119,9 @@
 			{@ $etIdx=1 }
 			<tr loop="$oDocument->getExtraVars() => $key,$val" cond="$val->getValueHTML() && $val->eid!='rd_preview'" class="bg{$etIdx%2}">
 				<th scope="row">{$val->name}</th>
-				<td cond="$val->eid!='rating'">{$val->getValueHTML()}</td>
+				<td cond="$val->eid!='rating'&&$val->eid!='rating1'">{$val->getValueHTML()}</td>
 				<td cond="$val->eid=='rating'" class="rating"><span class="starRating" title="{$val->getValueHTML()}{$lang->score}"><span style="width:{$val->getValueHTML()*10}%">{$val->getValueHTML()}</span></span></td>
+                <td cond="$val->eid=='rating1'" class="rating"><span class="starRating" title="{$val->getValueHTML()}{$lang->score}"><span style="width:{$val->getValueHTML()*10}%">{$val->getValueHTML()}</span></span></td>
 			{@ $etIdx++ }
 			</tr>
 		</table>
