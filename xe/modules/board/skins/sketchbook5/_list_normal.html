@@ -66,7 +66,7 @@ $order_type="desc";
 			</td>
 			<td cond="$val->type=='readed_count' && $val->idx==-1" class="m_no">{$document->get('readed_count')>0?$document->get('readed_count'):'0'}</td>
 			<td cond="$val->type=='voted_count' && $val->idx==-1" class="m_no">{$document->get('voted_count')!=0?$document->get('voted_count'):'0'}</td>
-			<td cond="$val->idx!=-1" class="m_no"|cond="$val->eid!='link_url'"><!--@if($val->eid=='rating')--><span class="starRating" title="{$document->getExtraValueHTML($val->idx)}{$lang->score}"><span style="width:{$document->getExtraValueHTML($val->idx)*10}%">{$document->getExtraValueHTML($val->idx)}</span></span><!--@else-->{$document->getExtraValueHTML($val->idx)}<!--@end--></td>
+			<td cond="$val->idx!=-1" class="m_no"|cond="$val->eid!='link_url'"><!--@if($val->eid=='rating'||$val->eid=='rating1')--><span class="starRating" title="{$document->getExtraValueHTML($val->idx)}{$lang->score}"><span style="width:{$document->getExtraValueHTML($val->idx)*10}%">{$document->getExtraValueHTML($val->idx)}</span></span><!--@else-->{$document->getExtraValueHTML($val->idx)}<!--@end--></td>
 			</block>
 			<td cond="$grant->manager" class="check m_no"><input type="checkbox" name="cart" value="{$document->document_srl}" class="iCheck" title="Check This Article" onclick="doAddDocumentCart(this)" checked="checked"|cond="$document->isCarted()" /></td>
 		</tr>
@@ -116,7 +116,7 @@ $order_type="desc";
 			</td>
 			<td cond="$val->type=='readed_count' && $val->idx==-1" class="m_no">{$document->get('readed_count')>0?$document->get('readed_count'):'0'}</td>
 			<td cond="$val->type=='voted_count' && $val->idx==-1" class="m_no">{$document->get('voted_count')!=0?$document->get('voted_count'):'0'}</td>
-			<td cond="$val->idx!=-1" class="<!--@if($val->eid=='link_url')-->link_url<!--@else-->m_no<!--@end-->"><!--@if($val->eid=='rating')--><span class="starRating" title="{$document->getExtraValueHTML($val->idx)}{$lang->score}"><span style="width:{$document->getExtraValueHTML($val->idx)*10}%">{$document->getExtraValueHTML($val->idx)}</span></span><!--@else-->{$document->getExtraValueHTML($val->idx)}<!--@end--></td>
+			<td cond="$val->idx!=-1" class="<!--@if($val->eid=='link_url')-->link_url<!--@else-->m_no<!--@end-->"><!--@if($val->eid=='rating'||$val->eid=='rating1')--><span class="starRating" title="{$document->getExtraValueHTML($val->idx)}{$lang->score}"><span style="width:{$document->getExtraValueHTML($val->idx)*10}%">{$document->getExtraValueHTML($val->idx)}</span></span><!--@else-->{$document->getExtraValueHTML($val->idx)}<!--@end--></td>
 			</block>
 			<td cond="$grant->manager" class="check m_no"><input type="checkbox" name="cart" value="{$document->document_srl}" class="iCheck" title="Check This Article" onclick="doAddDocumentCart(this)" checked="checked"|cond="$document->isCarted()" /></td>
 		</tr>
