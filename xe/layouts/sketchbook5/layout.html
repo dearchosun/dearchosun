@@ -120,11 +120,12 @@ body{background-image:url({$layout_info->bg});background-position:top {$layout_i
 				</div>
 			</li>
 		</ul>
-		<!--// 메인로고 -->
+		<!--// 메인로고 {$val1['link']} -> 디어조선으로 바꿈 -->
 		<div class="hgroup ui_font">
 			<h1>
-				<a loop="$main_menu->list=>$key1,$val1" cond="!$layout_info->use_color && $val1['selected']" href="{$val1['href']}" class="on {@$_idx = 0}<!--@foreach($main_menu->list as $key => $val)--><!--@if($val['selected'])-->{$_colorset_list[$_idx]}<!--@endif-->{@$_idx++}<!--@end-->">{$val1['link']}</a>
+<!--// a tag 위치 변경 -->
 				<a href="<!--@if($layout_info->index_url)-->{$layout_info->index_url}<!--@else-->{getUrl('')}<!--@end-->" class="home" style="position:relative;top:{$layout_info->img_y}px;left:{$layout_info->img_x}px"><img cond="$layout_info->logo_image" class="m_no_inline"|cond="$layout_info->logo_image_mobile" src="{$layout_info->logo_image}" alt="{$layout_info->logo_text}" /><img cond="$layout_info->logo_image_mobile" src="{$layout_info->logo_image_mobile}" class="m_yes_inline" alt="{$layout_info->logo_text}" /><block cond="!$layout_info->logo_image">{$layout_info->logo_text}</block></a>
+				<a loop="$main_menu->list=>$key1,$val1" cond="!$layout_info->use_color && $val1['selected']" href="{$val1['href']}" class="on {@$_idx = 0}<!--@foreach($main_menu->list as $key => $val)--><!--@if($val['selected'])-->{$_colorset_list[$_idx]}<!--@endif-->{@$_idx++}<!--@end-->">디어조선</a>
 			</h1>
 		</div>
 		<!--// 중간메뉴 -->
@@ -281,7 +282,7 @@ body{background-image:url({$layout_info->bg});background-position:top {$layout_i
 			<li class="m_yes_inline"><a href="#"><strong>▲ {$lang->cmd_move_up}</strong></a></li>
 		</ul>
 		<p cond="$layout_info->address" id="address">{$layout_info->address}</p>
-		<p id="maker"><!--@if($layout_info->maker)-->{$layout_info->maker}<!--@else--><a href="http://www.xpressengine.com/" target="_blank">Powered by <strong>X</strong>press <strong>E</strong>ngine</a> / <a href="http://sketchbooks.co.kr/" target="_blank">Designed by Sketchbook</a><!--@end--></p>
+		<p id="maker"><!--@if($layout_info->maker)-->{$layout_info->maker}<!--@else--><a href="http://www.dearchosun.com/" target="_blank">Powered by <strong>D</strong>ear <strong>C</strong>hosun</a><!--@end--></p>
 	</div>
 </div>
 
